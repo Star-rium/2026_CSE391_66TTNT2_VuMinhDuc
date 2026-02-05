@@ -1,0 +1,88 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+main{
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.header{
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #ccc;
+}
+.header-links{
+    display: flex;
+    align-items: center;
+}
+.title{
+    font-size: 24px;
+    margin-right: 30px;
+}
+.nav-bar a{
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+.title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.employee-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.employee-table th, .employee-table td{
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, select{
+    padding: 7.5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.add-employee-form{
+    max-width: 600px;
+    margin: auto;
+    border: 2px solid black;
+    padding: 6px;
+    border-radius: 6px;
+}
+.radio-group{
+    display: flex;
+    align-items: center;
+}
+.radio-group label{
+    margin-right: 15px;
+    font-weight: normal;
+}
+.radio-group input{
+    margin-right: 5px;
+}
+.form-footer{
+    text-align: right;
+    border-top: 1px solid black;
+    padding: 10px;
+}
