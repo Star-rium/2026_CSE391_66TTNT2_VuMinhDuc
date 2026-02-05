@@ -1,11 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <h3>Basic Info</h3>
+        <hr>
+    </header>
+    <form action="">
+        <div class="form-group">
+            <label for="">Employee ID</label><input type="text">
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="">Last Name</label><input type="text">
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="">First Name</label><input type="text">
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="">Gender</label>
+            <div class="radio-options">
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">Male</label> <br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label> <br>
+                <input type="radio" id="XXX" name="gender" value="XXX">
+                <label for="XXX">XXX</label> <br>
+                <input type="radio" id="ZZZ" name="gender" value="ZZZ">
+                <label for="ZZZ">ZZZ</label> <br>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Title</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">Suffix</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">BirthDate</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label for="">HireDate</label>
+            <input type="date">
+        </div>
+        <div class="form-group">
+            <label for="">SSN # (if applicable)</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">Report To</label>
+            <select name="" id="">
+                <option value="">Buchanan</option>
+                <option value="">Charlie Kirk</option>
+                <option value="">Musk</option>
+                <option value="">Epstein</option>
+            </select>
+        </div>
+    </form>
+    <header>
+        <h3>Contact Info
+        </h3>
+        <hr>
+    </header>
+    <form>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="">Address</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">City</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">Region</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">Postal Code</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="">Country</label>
+            <select name="country" id="country">
+                <option value="usa">Russian Federation</option>
+                <option value="china">China PR</option>
+                <option value="uk">UK</option>
+                <option value="turkey">Ottoman Empire</option>
+            </select>   
+        </div>
+        <div class="form-group">
+            <label for="">US Home Phone</label>
+            <input type="tel" placeholder="(234)234-2342" pattern ="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        </div>
+        <div class="form-group">
+            <label for="">Photo</label>
+            <input type="file">
+        </div>
+    </form>
+    <header>
+        <h3>Optional Info</h3>
+        <hr>
+    </header>
+    <form action="">
+        <div class="form-group">
+            <label for="">Notes</label>
+            <textarea name="notes" id="notes" cols="30" rows="10" placeholder= "Anne has a BA degree in English from St.Lawrence College She is Fluent in French and German ZZZ"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Preferred Shift</label>
+            <div class="radio-options">
+                <input type="radio" id="regular-shift" name="shift" value="shift1" checked>
+                <label for="regular-shift">Regular</label> <br>
+                <input type="radio" id="gravy-shift" name="shift" value="shift2">
+                <label for="gravy-shift">Gravy Yard</label> <br>
+            </div>
+        </div>
+       <div class="form-group">
+            <label for="status">Active?</label>
+            <input type="checkbox" name="status" id="status" checked>
+        </div>
+        <div class="form-group">
+            <label for="">Are you human?</label>
+            <div class="capcha-group">
+                <img src="asset/placeholder.png" alt="captcha" width="320" height="120">
+                <input type="text">
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="footer">
+        <button type="submit">Save</button>
+        <button type="cancel">Cancel</button>
+    </div>
 </body>
 </html>
