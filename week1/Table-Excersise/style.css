@@ -1,0 +1,14 @@
+.main-table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+.main-table th, .main-table td{
+    border: 1px solid black;
+    padding: 5px;
+}
+.main-table td{
+    text-align: left;
+}
