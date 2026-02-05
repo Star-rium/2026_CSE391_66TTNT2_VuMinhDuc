@@ -1,11 +1,18 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    max-width: 720px;
-    margin: auto;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.container{
+    padding: 20px 30px;
 }
 .form-group{
     display: flex;
-    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: flex-start;
+}
+.footer{
+
+    display: flex;
+    justify-content: flex-end;
 }
