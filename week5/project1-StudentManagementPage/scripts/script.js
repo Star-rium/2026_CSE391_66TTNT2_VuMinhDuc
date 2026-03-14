@@ -153,7 +153,7 @@ function scoreEvaluation(score) {
 }
 
 addButton.addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Ngăn form reload trang
     const name = inputName.value.trim();
     const score = parseFloat(inputScore.value);
     const regexScore = /^\d+(\.\d{1,2})?$/;
