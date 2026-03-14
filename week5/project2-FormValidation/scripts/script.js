@@ -142,6 +142,8 @@ function validateForm() {
     const termsChecked = document.getElementById('terms').checked;
     // console.log('Terms checked:', termsChecked); use for debugging    
     if(!termsChecked){
+        const termErrorMsg = document.getElementById("term-error")
+        termErrorMsg.style.display = "block"
         return false;
     }
     return true;
@@ -167,6 +169,53 @@ closeButton.addEventListener('click', function () {
         bootstrapModal.hide();
     }
 });
+
+// Real-time validation using blur events
+nameValue.addEventListener('blur', validateName);
+email.addEventListener('blur', validateEmail);
+phone.addEventListener('blur', validatePhone);
+password.addEventListener('blur', validatePassword);
+confirmPassword.addEventListener('blur', validateConfirmPassword);
+
+// Reset error state when user starts typing
+nameValue.addEventListener('input', function () {
+    nameValue.style.borderColor = '';
+    nameValue.style.backgroundColor = '';
+    nameValue.placeholder = '';
+});
+
+email.addEventListener('input', function () {
+    email.style.borderColor = '';
+    email.style.backgroundColor = '';
+    email.placeholder = '';
+});
+
+phone.addEventListener('input', function () {
+    phone.style.borderColor = '';
+    phone.style.backgroundColor = '';
+    phone.placeholder = '';
+});
+
+password.addEventListener('input', function () {
+    password.style.borderColor = '';
+    password.style.backgroundColor = '';
+    password.placeholder = '';
+});
+
+confirmPassword.addEventListener('input', function () {
+    confirmPassword.style.borderColor = '';
+    confirmPassword.style.backgroundColor = '';
+    confirmPassword.placeholder = '';
+});
+
+// Reset checkbox error message when user checks/unchecks
+document.getElementById('terms').addEventListener('change', function () {
+    const termErrorMsg = document.getElementById("term-error");
+    if (this.checked) {
+        termErrorMsg.style.display = "none";
+    }
+});
+
 // Test data for testing form submission (you can remove this later)
 const fillDataBtn = document.getElementById('fill-test-data');
 fillDataBtn.addEventListener('click', function () {

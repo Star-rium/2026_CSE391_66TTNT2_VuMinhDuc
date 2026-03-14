@@ -1,6 +1,18 @@
 .form-group{
     padding: 5px;
 }
+#header{
+    border-radius: 8px;
+    padding: 10px;
+}
+#main-container{
+    border-radius: 8px;
+    padding: 20px;
+}
+#term-error{
+    display: none;
+    color: red;
+}
 #info-modal {
     display: none;
     position: fixed;
