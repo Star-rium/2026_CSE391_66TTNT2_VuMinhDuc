@@ -216,15 +216,16 @@ document.getElementById('terms').addEventListener('change', function () {
     }
 });
 
-// Test data for testing form submission (you can remove this later)
-const fillDataBtn = document.getElementById('fill-test-data');
-fillDataBtn.addEventListener('click', function () {
-    nameValue.value = 'John Doe';
-    email.value = 'johndoe@example.com';
-    phone.value = '0123456789';
-    password.value = 'Password123';
-    confirmPassword.value = 'Password123';
-});
+// // Test data for testing form submission
+// const fillDataBtn = document.getElementById('fill-test-data');
+// fillDataBtn.addEventListener('click', function () {
+//     nameValue.value = 'John Doe';
+//     email.value = 'johndoe@example.com';
+//     phone.value = '0123456789';
+//     password.value = 'Password123';
+//     confirmPassword.value = 'Password123';
+// });
+
 // Event listener for testing form submission
 document.getElementById('submit-btn').addEventListener('click', function (event) {
     event.preventDefault();
