@@ -79,6 +79,55 @@ function validatePhone() {
     phone.style.backgroundColor = '';
     return true;
 }
+// Analyze password strength and update the strength bar
+function analyzePasswordStrength() {
+    const pwd = password.value;
+    const strengthBar = document.getElementById('password-strength-bar');
+    const strengthText = document.getElementById('password-strength-text');
+    
+    // Remove previous classes
+    strengthBar.className = '';
+    strengthText.className = '';
+    
+    // If password is empty, reset bar
+    if (!pwd) {
+        strengthText.textContent = '';
+        return;
+    }
+    
+    let strength = 0;
+    
+    // Check password criteria
+    if (pwd.length >= 8) strength++;
+    if (pwd.length >= 12) strength++;
+    if (/[a-z]/.test(pwd)) strength++;
+    if (/[A-Z]/.test(pwd)) strength++;
+    if (/\d/.test(pwd)) strength++;
+    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pwd)) strength++;
+    
+    // Determine strength level
+    let level = 'weak';
+    let levelText = 'Weak';
+    
+    if (strength <= 2) {
+        level = 'weak';
+        levelText = 'Weak';
+    } else if (strength <= 3) {
+        level = 'fair';
+        levelText = 'Fair';
+    } else if (strength <= 4) {
+        level = 'good';
+        levelText = 'Good';
+    } else {
+        level = 'strong';
+        levelText = 'Strong';
+    }
+    
+    strengthBar.classList.add(level);
+    strengthText.classList.add(level);
+    strengthText.textContent = levelText;
+}
+
 // Validation for password input with regex (min length 8, 1 uppercase, 1 lowercase, 1 number)
 function validatePassword() {
     // Todo: Real-time validation after user finishes typing or moves to another field (onblur event) --- IGNORE ---
@@ -200,6 +249,7 @@ password.addEventListener('input', function () {
     password.style.borderColor = '';
     password.style.backgroundColor = '';
     password.placeholder = '';
+    analyzePasswordStrength();
 });
 
 confirmPassword.addEventListener('input', function () {

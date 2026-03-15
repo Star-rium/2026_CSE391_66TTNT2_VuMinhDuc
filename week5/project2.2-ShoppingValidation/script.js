@@ -15,6 +15,12 @@ const noteInput = document.getElementById('note');
 const paymentOptions = document.querySelectorAll('input[name="payOptions"]');
 
 const submitBtn = document.getElementById('submit-btn');
+const confirmBtn = document.getElementById('confirm-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+const totalPrice = document.getElementById('totalPrice')
+const wordCounter = document.getElementById('wordCounter');
+const confirmationModal = document.getElementById('orderModal');
+
 
 // Dummy prices data for testing total price calculation
 const productPrices = {
@@ -25,6 +31,15 @@ const productPrices = {
     'smartwatch': 700
 };
 
+function updateWordCount() {
+    const noteLength = noteInput.value.length;
+    wordCounter.textContent = `${noteLength}/200`;
+    if (noteLength > 200) {
+        wordCounter.style.color = 'red';
+    } else {
+        wordCounter.style.color = '';
+    }
+}
 // Function to calculate total price based on selected product and amount
 function calculateTotalPrice() {
     const prodNameSelect = document.getElementById('prodName');
@@ -183,6 +198,36 @@ function validateForm() {
     }
     return true;
 }
+// Function to show confirmation modal
+function showConfirmationModal() {
+    confirmationModal.style.display = 'block';
+    const orderDetails = document.getElementById('orderDetails');
+    orderDetails.innerHTML = `
+        <p><strong>Tên sản phẩm:</strong> ${document.getElementById('prodName').value}</p>
+        <p><strong>Số lượng:</strong> ${document.getElementById('amount').value}</p>
+        <p><strong>Ngày giao hàng:</strong> ${document.getElementById('deliveryDate').value}</p>
+        <p><strong>Địa điểm nhận:</strong> ${document.getElementById('receiveLocation').value}</p>
+        <p><strong>Ghi chú:</strong> ${document.getElementById('note').value}</p>
+        <p><strong>Phương thức thanh toán:</strong> ${document.querySelector('input[name="payOptions"]:checked')?.value || 'Not selected'}</p>
+        <p><strong>Tổng giá:</strong> $${calculateTotalPrice()}</p>
+    `;
+    const bootstrapModal = new bootstrap.Modal(confirmationModal, {
+        backdrop: false,
+    });
+    bootstrapModal.show();
+    confirmBtn.addEventListener('click', function () {
+        console.log('Order confirmed');
+        document.getElementById('modal-body').innerHTML = '<p>Order confirmed successfully!</p>';
+        document.getElementById('confirm-btn').style.display = 'none';
+        document.getElementById('cancel-btn').style.display = 'none';
+    });
+    cancelBtn.addEventListener('click', function () {
+        console.log('Order cancelled');
+        confirmationModal.style.display = 'none';
+        bootstrapModal.hide();
+    });
+}
+
 // Real-time validation after user finishes typing or moves to another field (onblur event) for each input field
 prodNameSelect.addEventListener('blur', validateProductName);
 amountInput.addEventListener('blur', validateAmount);
@@ -199,12 +244,14 @@ prodNameSelect.addEventListener('input', function () {
     const prodLabel = document.getElementById('prodLabel');
     prodLabel.textContent = 'Tên sản phẩm'; // Todo: Real-time total price calculation when user changes product or amount (can be done in the oninput event of product and amount fields)
     prodLabel.style.color = '';
+    totalPrice.textContent = calculateTotalPrice(); // Update total price in real-time when product changes
 });
 amountInput.addEventListener('input', function () {
     amountInput.style.borderColor = '';
     const amountLabel = document.getElementById('amountLabel');
     amountLabel.textContent = 'Số lượng'; // Todo: Real-time total price calculation when user changes product or amount (can be done in the oninput event of product and amount fields)
     amountLabel.style.color = '';
+    totalPrice.textContent = calculateTotalPrice(); // Update total price in real-time when amount changes
 });
 deliveryDateInput.addEventListener('input', function () {
     deliveryDateInput.style.borderColor = '';
@@ -221,9 +268,10 @@ receiveLocationInput.addEventListener('input', function () {
 noteInput.addEventListener('input', function () {
     noteInput.style.borderColor = '';
     const noteLabel = document.getElementById('noteLabel');
-    noteLabel.textContent = 'Ghi chú'; 
+    noteLabel.textContent = 'Ghi chú';
     noteLabel.style.color = '';
-    // Todo: Note character count validation (can be done in the oninput event of the note field)
+
+    updateWordCount(); // Update word count in real-time when user types in the note field
 });
 paymentOptions.forEach(option => {
     option.addEventListener('change', function () {
@@ -236,13 +284,13 @@ paymentOptions.forEach(option => {
 // Function to print all form information to console (testing purpose)
 function printFormInfo() {
     const formData = {
-    productName: document.getElementById('prodName').value,
-    amount: document.getElementById('amount').value,
-    deliveryDate: document.getElementById('deliveryDate').value,
-    receiveLocation: document.getElementById('receiveLocation').value,
-    note: document.getElementById('note').value,
-    paymentOption: document.querySelector('input[name="payOptions"]:checked')?.value || 'Not selected'
-};
+        productName: document.getElementById('prodName').value,
+        amount: document.getElementById('amount').value,
+        deliveryDate: document.getElementById('deliveryDate').value,
+        receiveLocation: document.getElementById('receiveLocation').value,
+        note: document.getElementById('note').value,
+        paymentOption: document.querySelector('input[name="payOptions"]:checked')?.value || 'Not selected'
+    };
     console.log(formData);
 }
 
@@ -252,6 +300,7 @@ submitBtn.addEventListener('click', function (event) {
     if (validateForm()) {
         printFormInfo();
         console.log(calculateTotalPrice());
+        showConfirmationModal();
     } else {
         console.log('Form validation failed');
     }
@@ -269,4 +318,5 @@ dummyDataBtn.addEventListener('click', function () {
     document.getElementById('receiveLocation').value = '123 Main Street, City';
     document.getElementById('note').value = 'Please deliver between 9 AM and 5 PM.';
     document.querySelector('input[name="payOptions"][value="credit"]').checked = true;
+    updateWordCount(); // Update word count when dummy data is filled
 });

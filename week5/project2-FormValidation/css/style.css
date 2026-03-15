@@ -21,3 +21,72 @@
     padding: 20px;
     z-index: 1000;
 }
+
+/* Password strength bar styles */
+#password-strength-container {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#password-strength-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+#password-strength-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#password-strength-bar.weak::after {
+    width: 25%;
+    background-color: #dc3545;
+}
+
+#password-strength-bar.fair::after {
+    width: 50%;
+    background-color: #fd7e14;
+}
+
+#password-strength-bar.good::after {
+    width: 75%;
+    background-color: #ffc107;
+}
+
+#password-strength-bar.strong::after {
+    width: 100%;
+    background-color: #28a745;
+}
+
+#password-strength-text {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+}
+
+#password-strength-text.weak {
+    color: #dc3545;
+}
+
+#password-strength-text.fair {
+    color: #fd7e14;
+}
+
+#password-strength-text.good {
+    color: #ffc107;
+}
+
+#password-strength-text.strong {
+    color: #28a745;
+}
